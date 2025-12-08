@@ -45,23 +45,23 @@ Think of Linux as a layered cake:
 
 Linux treats everything as a file. The file system is a tree structure starting from the root `/`.
 
-| Path     | Description                                                                 |
-| :------- | :-------------------------------------------------------------------------- |
-| `/`      | **Root Directory**. The starting point of the file system.                  |
-| `/bin`   | **Binaries**. Essential user command binaries (e.g., `ls`, `cp`).           |
-| `/boot`  | **Boot Loader**. Files needed to boot the system.                           |
-| `/dev`   | **Devices**. Device files (e.g., hard drives, terminals).                   |
-| `/etc`   | **Etcetera**. Configuration files for the system.                           |
-| `/home`  | **Home**. Personal directories for users (e.g., `/home/alice`).             |
-| `/lib`   | **Libraries**. Shared libraries needed by binaries in `/bin` and `/sbin`.   |
-| `/media` | **Media**. Mount points for removable media (USB, CD-ROM).                  |
-| `/mnt`   | **Mount**. Temporary mount points.                                          |
-| `/opt`   | **Optional**. Add-on application software packages.                         |
-| `/proc`  | **Processes**. Virtual filesystem providing process and kernel information. |
-| `/root`  | **Root Home**. The home directory for the root (admin) user.                |
-| `/sbin`  | **System Binaries**. Essential system binaries (e.g., `reboot`, `fdisk`).   |
-| `/tmp`   | **Temporary**. Temporary files (deleted on reboot).                         |
-| `/usr`   | **User**. User utilities and applications (secondary hierarchy).            |
-| `/var`   | **Variable**. Variable data files (logs, mail, spool).                      |
+| Path     | Description                                                   | Common Examples                                      |
+| :------- | :------------------------------------------------------------ | :--------------------------------------------------- |
+| `/`      | **Root Directory**. The starting point of the file system.    | N/A                                                  |
+| `/bin`   | **Binaries**. Essential command binaries for all users.       | `ls`, `cp`, `cat`, `mkdir`, `bash`                   |
+| `/boot`  | **Boot Loader**. Static files of the boot loader.             | `vmlinuz` (kernel), `grub/`                          |
+| `/dev`   | **Devices**. Device files representing hardware.              | `/dev/sda` (disk), `/dev/null`, `/dev/tty1`          |
+| `/etc`   | **Etcetera**. Host-specific system-wide configuration files.  | `/etc/passwd`, `/etc/shadow`, `/etc/ssh/`            |
+| `/home`  | **Home**. Personal directories for regular users.             | `/home/alice`, `/home/bob/Documents`                 |
+| `/lib`   | **Libraries**. Shared libraries needed by `/bin` and `/sbin`. | `libc.so`, `ld-linux.so`, kernel modules             |
+| `/media` | **Media**. Mount points for removable media.                  | `/media/usb`, `/media/cdrom`                         |
+| `/mnt`   | **Mount**. Temporarily mounted filesystems.                   | Used by admins to mount network drives manually      |
+| `/opt`   | **Optional**. Add-on application software packages.           | `google-chrome/`, `zoom/`, `docker/`                 |
+| `/proc`  | **Processes**. Virtual filesystem for kernel & process info.  | `/proc/cpuinfo`, `/proc/meminfo`, `/proc/1234/`      |
+| `/root`  | **Root Home**. Home directory for the root user.              | `/root/.bashrc` (distinct from `/`)                  |
+| `/sbin`  | **System Binaries**. Essential system binaries (admin only).  | `fdisk`, `reboot`, `iptables`, `ifconfig`            |
+| `/tmp`   | **Temporary**. Temporary files (often cleared on reboot).     | Session files, temporary sockets                     |
+| `/usr`   | **User**. Secondary hierarchy for user data & programs.       | `/usr/bin` (non-essential), `/usr/lib`, `/usr/local` |
+| `/var`   | **Variable**. Variable data files that change often.          | `/var/log/syslog`, `/var/www/html`, `/var/spool`     |
 
 > **Key Takeaway:** Unlike Windows (C:\, D:\), Linux has a single tree structure starting at `/`.
