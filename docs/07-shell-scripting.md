@@ -18,36 +18,121 @@ echo "Hello, World!"
 
 ## Variables
 
+Variables store data for later use. By default, all variables are strings.
+
 ```bash
 NAME="Alice"
-echo "Hello, $NAME"
+AGE=25
+echo "Hello, $NAME. You are $AGE years old."
 ```
 
-- **Note:** No spaces around `=`.
+- **Assignment:** `VAR=value` (No spaces around `=`).
+- **Access:** `$VAR` or `${VAR}`.
+- **Command Substitution:** Store the output of a command.
+  ```bash
+  CURRENT_DATE=$(date)
+  echo "Today is $CURRENT_DATE"
+  ```
 
 ## Loops
 
+Loops allow you to execute a block of code repeatedly.
+
 ### For Loop
 
-Run a command multiple times.
+Iterates over a list of items.
 
 ```bash
-for i in {1..5}
-do
+# Standard for loop
+for i in {1..5}; do
    echo "Number: $i"
+done
+
+# C-style for loop
+for ((i=0; i<5; i++)); do
+   echo "Counter: $i"
+done
+```
+
+### While Loop
+
+Executes as long as the condition is **true**.
+
+```bash
+count=1
+while [ $count -le 5 ]; do
+    echo "Count: $count"
+    ((count++))
+done
+```
+
+### Until Loop
+
+Executes as long as the condition is **false** (until it becomes true).
+
+```bash
+count=1
+until [ $count -gt 5 ]; do
+    echo "Count: $count"
+    ((count++))
+done
+```
+
+### Loop Control
+
+- **break**: Exits the loop immediately.
+- **continue**: Skips the rest of the current iteration and starts the next one.
+
+```bash
+for i in {1..10}; do
+    if [ $i -eq 3 ]; then
+        continue  # Skip 3
+    fi
+    if [ $i -eq 7 ]; then
+        break     # Stop at 7
+    fi
+    echo "Number: $i"
 done
 ```
 
 ## Conditionals (If/Else)
 
-Make decisions.
+Make decisions based on conditions.
 
 ```bash
 if [ -f "file.txt" ]; then
     echo "File exists."
+elif [ -d "backup" ]; then
+    echo "Backup directory exists."
 else
-    echo "File not found."
+    echo "Nothing found."
 fi
+```
+
+### Common Comparisons
+
+- `-eq`, `-ne`, `-gt`, `-lt`: Integer comparisons (equal, not equal, greater than, less than).
+- `=`, `!=`: String comparisons.
+- `-f`, `-d`: File and directory checks.
+
+## Case Statements (Switch)
+
+Useful when checking a variable against multiple patterns.
+
+```bash
+read -p "Enter a fruit: " FRUIT
+
+case "$FRUIT" in
+    "apple")
+        echo "It's red."
+        ;;
+    "banana")
+        echo "It's yellow."
+        ;;
+    *)
+        echo "Unknown fruit."
+        ;;
+esac
 ```
 
 ## Functions
